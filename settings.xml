@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>xwiki</id>
+            <repositories>
+                <repository>
+                    <id>xwiki-nexus</id>
+                    <!-- https://mvnrepository.com/artifact/com.novell.ldap -->
+                    <name>novel</name>
+                    <url>https://nexus.xwiki.org/nexus/content/repositories/releases</url>
+
+                </repository>
+                <repository>
+                    <id>xwiki-external</id>
+                    <name>xwiki-external</name>
+                    <url>https://maven.xwiki.org/externals/</url>
+                </repository>
+                <repository>
+                    <id>edinburg</id>
+                    <name>edinburg-rep</name>
+                    <url>https://www2.ph.ed.ac.uk/maven2/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>
+
+        </activeProfile>
+    </activeProfiles>
+</settings>

@@ -35,7 +35,7 @@ import com.novell.ldap.controls.LDAPPagedResultsResponse;
 
 /**
  * Paginated version of {@link LDAPSearchResults}.
- * 
+ *
  * @version $Id$
  * @since 9.3
  */
@@ -78,7 +78,7 @@ public class PagedLDAPSearchResults implements AutoCloseable
      * @throws LDAPException A general exception which includes an error message and an LDAP error code.
      */
     public PagedLDAPSearchResults(XWikiLDAPConnection connection, String base, int scope, String filter, String[] attrs,
-        boolean typesOnly, int pageSize) throws LDAPException
+                                  boolean typesOnly, int pageSize) throws LDAPException
     {
         this.connection = connection;
 
@@ -98,18 +98,19 @@ public class PagedLDAPSearchResults implements AutoCloseable
     {
         LDAPPagedResultsControl control = new LDAPPagedResultsControl(this.pageSize, cookie, false);
         LDAPSearchConstraints constraints = new LDAPSearchConstraints();
-        constraints.setControls(control);
+        //constraints.setControls(control);
+        LOGGER.info(" AXWIKI: constrains disabled (does not work with ibm ldap)");
 
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug(
-                "LDAP pagined search: base=[{}] query=[{}] attrs=[{}] scope=[{}] typesOnly=[{}]"
-                    + " pageSize=[{}], cookie=[{}]",
-                this.base, this.filter, this.attrs != null ? Arrays.asList(this.attrs) : null, this.scope,
-                this.typesOnly, this.pageSize, cookie != null ? Arrays.asList(cookie) : null);
+                    "LDAP pagined search: base=[{}] query=[{}] attrs=[{}] scope=[{}] typesOnly=[{}]"
+                            + " pageSize=[{}], cookie=[{}]",
+                    this.base, this.filter, this.attrs != null ? Arrays.asList(this.attrs) : null, this.scope,
+                    this.typesOnly, this.pageSize, cookie != null ? Arrays.asList(cookie) : null);
         }
 
         this.currentSearchResults = this.connection.getConnection().search(this.base, this.scope, this.filter,
-            this.attrs, this.typesOnly, constraints);
+                this.attrs, this.typesOnly, constraints);
     }
 
     private LDAPSearchResults getCurrentLDAPSearchResults() throws LDAPException
