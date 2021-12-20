@@ -1,4 +1,9 @@
 # LDAP
+AUTOSDE CHANGES:
+### Enables login with user email
+* use **settings.xml** to compile as mvn compile -Pxwiki
+* use profile xwiki
+* use -DskipTests in mvn package -Pxwiki
 
 Various tools to manipulate LDAP servers in XWiki.
 
